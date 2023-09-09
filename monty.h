@@ -1,14 +1,15 @@
 #ifndef MONTY
 #define MONTY
 
-#include "monty.h"
+#include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <fcntl.h>
 #include <unistd.h>
+#include <ctype.h>
+
 /* MACRO */
 #define BUFSIZE 1024
-
+#define DELIM " \n\t"
 
 /* COMPILING */
 
@@ -48,11 +49,30 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/* FUNCTION */
 
+
+/* GLOBAL VARIABLES */
+
+
+/* ERROR FUNCTION */
 void error_exit_s(const char *message, const char *extra_info, int code);
 void error_exit_d(const char *message, const int extra_info, int code);
 void invalid_opcode(const int line, const char *opcode);
-char **parse_monty(char *input);
+
+/* LINKED LIST FUNCTION */
+
+stack_t *add_dnodeint(stack_t **head, const int n);
+stack_t *add_dnodeint_end(stack_t **head, const int n);
+void free_dlistint(stack_t *head);
+
+/* OPCODE FUNCTION */
+void (*get_op_func(char *opcode))(stack_t **, unsigned int);
+
+void push(stack_t **stack, unsigned int line);
+void pall(stack_t **stack, unsigned int line);
+void pop(stack_t **stack, unsigned int line);
+void pint(stack_t **stack, unsigned int line);
+void nop(stack_t **stack, unsigned int line);
+
 
 #endif
