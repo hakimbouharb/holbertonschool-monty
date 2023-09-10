@@ -24,9 +24,8 @@ void error_exit_d(const char *message, const int extra_info, int code)
 }
 /**
  * invalid_opcode - functin that exit if the instruction is invalide
- * @message: message
- * @extra_info: extra_info
- * @code: code exit
+ * @line:line number
+ * @opcode: opcode
 */
 void invalid_opcode(const int line, const char *opcode)
 {
