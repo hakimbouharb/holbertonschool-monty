@@ -29,6 +29,11 @@ int main(int argc, char **argv)
 	while ((nread = getline(&buffer, &len , fd)) != -1)
 	{
 		op = strtok(buffer, DELIM);
+		if(op == NULL)
+		{
+			nline++;
+			continue;
+		}
 		arg = strtok (NULL, DELIM);
 		if (!strcmp(op, "push") && !int_valid(arg))
 		{
