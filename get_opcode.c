@@ -40,15 +40,19 @@ void (*get_op_func(char *opcode))(stack_t **, unsigned int)
 
 int int_valid(char *str)
 {
-	int i;
+	int i = 0;
 
 	if (str == NULL || *str == '\0')
 	{
 		return (0);
 	}
-	for (i = 0; str[i] != '\0'; i++)
+	if (str[0] == '-')
 	{
-		if (!isdigit(str[i]) && (i == 0 && str[i] != '-' && str[i] != '+'))
+		i = 1;
+	}
+	for (; str[i] != '\0'; i++)
+	{
+		if (!isdigit(str[i]))
 		{
 			return (0);
 		}
