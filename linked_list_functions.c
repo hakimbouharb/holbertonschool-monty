@@ -23,3 +23,21 @@ stack_t *add_dnodeint(stack_t **head, const int n)
 	*head = new_node;
 	return (new_node);
 }
+/**
+ * free_dlistint - function that frees a stack_t list.
+ * @head: list
+ * Return: void
+*/
+void free_dlistint(stack_t *head)
+{
+	stack_t *current = head;
+
+	while (current != NULL)
+	{
+		stack_t *next_node = current->next;
+
+		free(current);
+
+		current = next_node;
+	}
+}
