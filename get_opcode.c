@@ -30,7 +30,6 @@ void (*get_op_func(char *opcode))(stack_t **, unsigned int)
 		}
 		i++;
 	}
-	invalid_opcode(nline, opcode);
 	return (NULL);
 }
 /**
@@ -53,6 +52,6 @@ int int_valid(char *str)
 		{
 			return (0);
 		}
-		return (1);
 	}
+	return (1);
 }
