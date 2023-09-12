@@ -5,6 +5,8 @@
  * @argv: argument variables
  * Return: success 0   on error 1
 */
+char *arg;
+
 int main(int argc, char **argv)
 {
     FILE *fd;
@@ -12,6 +14,8 @@ int main(int argc, char **argv)
     char *op;
     size_t len = 0;
     ssize_t nread = 1;
+	unsigned int nline = 1;
+	stack_t *top = NULL;
     void (*f)(stack_t **, unsigned int);
 
 	if (argc != 2)
@@ -20,17 +24,26 @@ int main(int argc, char **argv)
 	fd = fopen(argv[1], "r");
 	if (fd == NULL)
 		error_exit_s("Error: Can't read from file %s\n", argv[1], EXIT_FAILURE);
-
-	while (nread > 0)
+	
+	
+	while ((nread = getline(&buffer, &len , fd)) != -1)
 	{
-		nread = getline(&buffer, &len , fd);
-		if(nread > 0)
+		op = strtok(buffer, DELIM);
+		arg = strtok (NULL, DELIM);
+		if (!strcmp(op, "push") && !int_valid(arg))
 		{
-//			printf("%d\n", nread);
+			fclose(fd);
+			free(buffer);
+			free_dlistint(top);
+			error_exit_d("L%u: usage: push integer", nline, EXIT_FAILURE);
 		}
-	}
-
-
+		f = get_op_func(op);
+		f(&top ,nline);
+		nline++;
+	} 
+	
 	fclose(fd);
+	free(buffer);
+	free_dlistint(top);
 	return (0);
 }
