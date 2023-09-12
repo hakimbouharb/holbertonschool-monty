@@ -8,7 +8,7 @@
 void push(stack_t **stack, unsigned int line)
 {
 	(void)line;
-	int n;
+	int n = atoi(arg);
 
 	add_dnodeint(stack, n);
 
@@ -55,8 +55,6 @@ void swap(stack_t **stack, unsigned int line)
     temp->next = (*stack);
     (*stack) = temp;
 }
-
-#include "monty.h"
 
 /**
  * add - add the top two elements of the stack.
