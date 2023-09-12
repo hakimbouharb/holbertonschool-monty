@@ -40,7 +40,7 @@ int main(int argc, char **argv)
 			fclose(fd);
 			free(buffer);
 			free_dlistint(top);
-			error_exit_d("L%u: usage: push integer", nline, EXIT_FAILURE);
+			error_exit_d("L%u: usage: push integer\n", nline, EXIT_FAILURE);
 		}
 		f = get_op_func(op);
 		f(&top ,nline);
