@@ -68,7 +68,7 @@ void free_dlistint(stack_t *head);
 
 /* OPCODE FUNCTION */
 void (*get_op_func(char *opcode))(stack_t **, unsigned int);
-
+void read_and_execute_instructions(FILE *fd);
 void push(stack_t **stack, unsigned int line);
 void pall(stack_t **stack, unsigned int line);
 void pop(stack_t **stack, unsigned int line);
