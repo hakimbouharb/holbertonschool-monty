@@ -43,17 +43,17 @@ void pall(stack_t **stack, unsigned int line)
  */
 void swap(stack_t **stack, unsigned int line)
 {
-    stack_t *temp;
+	stack_t *temp;
 
-    if (*stack == NULL || (*stack)->next == NULL)
-    {
-        error_exit_d("L%u: can't swap, stack too short\n", line, EXIT_FAILURE);
-    }
+	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		error_exit_d("L%u: can't swap, stack too short\n", line, EXIT_FAILURE);
+	}
 
-    temp = (*stack)->next;
-    (*stack)->next = temp->next;
-    temp->next = (*stack);
-    (*stack) = temp;
+	temp = (*stack)->next;
+	(*stack)->next = temp->next;
+	temp->next = (*stack);
+	(*stack) = temp;
 }
 
 /**
@@ -64,11 +64,12 @@ void swap(stack_t **stack, unsigned int line)
  */
 void add(stack_t **stack, unsigned int line)
 {
-    if (*stack == NULL || (*stack)->next == NULL)
-    {
-        error_exit_d("L%u: can't add, stack too short\n", line, EXIT_FAILURE);
-    }
+	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		error_exit_d("L%u: can't add, stack too short\n", line, EXIT_FAILURE);
+	}
 
-    (*stack)->next->n += (*stack)->n;
-    pop(stack, line);
+	(*stack)->next->n += (*stack)->n;
+	pop(stack, line);
 }
+
