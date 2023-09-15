@@ -5,7 +5,7 @@
  * @argv: argument variables
  * Return: success 0   on error 1
 */
-
+char *arg;
 int main(int argc, char **argv)
 {
 	FILE *fd;
