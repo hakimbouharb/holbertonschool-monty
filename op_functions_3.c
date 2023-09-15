@@ -62,7 +62,7 @@ void _mod(stack_t **stack, unsigned int line)
 {
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
-		error_exit_d("L%u: can't div, stack too short\n", line, EXIT_FAILURE);
+		error_exit_d("L%u: can't mod, stack too short\n", line, EXIT_FAILURE);
 	}
 	if ((*stack)->n == 0)
 	{
