@@ -22,6 +22,7 @@ void (*get_op_func(char *opcode))(stack_t **, unsigned int)
 		{"sub", sub},
 		{"mul", mul},
 		{"div", _div},
+		{"mod", _mod},
 		{NULL, NULL}
 	};
 
