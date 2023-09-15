@@ -48,6 +48,6 @@ void _div(stack_t **stack, unsigned int line)
 		error_exit_d("L%u: division by zero\n", line, EXIT_FAILURE);
 	}
 
-	(*stack)->next->n += (*stack)->n;
+	(*stack)->next->n /= (*stack)->n;
 	pop(stack, line);
 }
